@@ -25,9 +25,9 @@ def initial_masage():
     now = get_time()
     
     if crypto_price() > 0:
-        return f"📈 Станом на {now.split(" ")[1]} {now.split(" ")[2]} у {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} Егор заробив {crypto_price()} USD."
+        return f"📈 Станом на {now.split(" ")[1]} {now.split(" ")[2]} о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} Егор заробив {crypto_price()} USD."
     else:
-        return f"📉 Станом на {now.split(" ")[1]} {now.split(" ")[2]} у {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} Егор проебав {crypto_price()} USD."
+        return f"📉 Станом на {now.split(" ")[1]} {now.split(" ")[2]} о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} Егор проебав {crypto_price()} USD."
 
 def send_message(bot_token, chat_id, message):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
