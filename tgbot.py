@@ -1,6 +1,6 @@
 from pytz import timezone
 import requests, time, datetime
-
+#
 def crypto_price():
     url = f"https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd"
     price = requests.get(url)
