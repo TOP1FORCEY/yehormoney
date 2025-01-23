@@ -25,9 +25,9 @@ def initial_masage():
     now = get_time()
     
     if crypto_price() > 0:
-        return f"Егор о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} у {now.split(" ")[1]} {now.split(" ")[2]} заробив {crypto_price()} USD."
+        return f"📈 Станом на {now.split(" ")[1]} {now.split(" ")[2]} у {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} Егор заробив {crypto_price()} USD."
     else:
-        return f"Егор о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} у {now.split(" ")[1]} {now.split(" ")[2]} проєбав {crypto_price()} USD."
+        return f"📉 Станом на {now.split(" ")[1]} {now.split(" ")[2]} у {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} Егор проебав {crypto_price()} USD."
 
 def send_message(bot_token, chat_id, message):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -47,7 +47,7 @@ def send_message(bot_token, chat_id, message):
 def main():
     while True:
         send_message(BOT_TOKEN, CHAT_ID, initial_masage())
-        time.sleep(random.randint(500, 1000))
+        time.sleep(random.randint(400, 1000))
 
 if __name__ == "__main__":
     main()
