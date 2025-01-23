@@ -6,7 +6,7 @@ def crypto_price():
     price = requests.get(url)
     data = price.json()
 
-    return round((data["dogecoin"]["usd"] - 0.3825) * 2000, 3)
+    return round((data["dogecoin"]["usd"] - 0.378) * 2000, 3)
 
 
 dt = datetime.datetime.now(tz = timezone("Europe/Kyiv"))
@@ -18,8 +18,11 @@ for key in translate.keys():
     now = now.replace(key, translate[key])
 
 BOT_TOKEN = "7795281162:AAEeYa2J23CnT1XwE_JhARdj3ZYisZKUOjQ"
-CHAT_ID = "-1002215357125"  # Use the group chat ID or user chat ID
-MESSAGE = f"Егор о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} у {now.split(" ")[1]} {now.split(" ")[2]} має {crypto_price()} USD у профіті."
+CHAT_ID = "579330785"  # Use the group chat ID or user chat ID
+if crypto_price() > 0:
+    MESSAGE = f"Егор о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} у {now.split(" ")[1]} {now.split(" ")[2]} заробив {crypto_price()} USD."
+else:
+    MESSAGE = f"Егор о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} у {now.split(" ")[1]} {now.split(" ")[2]} проєбав {crypto_price()} USD."
 
 def send_message(bot_token, chat_id, message):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -30,7 +33,7 @@ def send_message(bot_token, chat_id, message):
     response = requests.post(url, json=payload)
     
     if response.status_code == 200:
-        print("Message sent successfully!")
+        print(f"Message ({MESSAGE}) sent successfully!")
         return True
     else:
         print("Failed to send message. Error:", response.text)
