@@ -18,7 +18,7 @@ for key in translate.keys():
     now = now.replace(key, translate[key])
 
 BOT_TOKEN = "7795281162:AAEeYa2J23CnT1XwE_JhARdj3ZYisZKUOjQ"
-CHAT_ID = "502712453"  # Use the group chat ID or user chat ID
+CHAT_ID = "-2215357125"  # Use the group chat ID or user chat ID
 MESSAGE = f"Егор о {now.split(" ")[0].split(":")[0]}:{now.split(" ")[0].split(":")[1]} у {now.split(" ")[1]} {now.split(" ")[2]} має {crypto_price()} USD у профіті."
 
 def send_message(bot_token, chat_id, message):
