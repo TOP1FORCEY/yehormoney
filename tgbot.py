@@ -6,7 +6,7 @@ def crypto_price():
     price = requests.get(url)
     data = price.json()
 
-    return round((data["dogecoin"]["usd"] - 0.37129) * 2000, 3)
+    return round((data["dogecoin"]["usd"] * 2000 - 0.37129 * 2000), 3)
 
 def get_time():
     dt = datetime.datetime.now(tz = timezone("Europe/Kyiv"))
